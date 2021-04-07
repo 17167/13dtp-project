@@ -1,0 +1,63 @@
+@keyframes color {
+    0%,
+    100% {
+        text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00
+    }
+    25% {
+        text-shadow: 3px 3px #fbff00, 4px 4px #FF0000, 5px 5px #8c00ff, 6px 6px #00ff0d;
+    }
+    50% {
+        text-shadow: 2px 2px #00ff0d, 3px 3px #fbff00, 4px 4px #FF0000, 5px 5px #8c00ff;
+    }
+    75% {
+        text-shadow: 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00, 6px 6px #FF0000;
+    }
+}
+
+@keyframes bg-color {
+    0%,
+    100% {
+        background: #FF0000;
+    }
+    25% {
+        background: #fbff00;
+    }
+    50% {
+        background: #00ff0d;
+    }
+    75% {
+        background: #8c00ff;
+    }
+}
+
+p {
+    animation: color 100ms infinite;
+    /* text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00; */
+}
+
+h1 {
+    animation: color 100ms infinite 100ms;
+    text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00;
+}
+
+a:link {
+    animation: color 100ms infinite 200ms;
+    text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00;
+    color: black;
+}
+
+a:hover {
+    animation: color 100ms infinite 300ms;
+    text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00;
+    color: blue;
+}
+
+a:visited {
+    animation: color 100ms infinite 400ms;
+    text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00;
+    color: black;
+}
+
+body {
+    animation: bg-color 100ms infinite;
+}

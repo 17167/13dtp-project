@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="/static/layout.css">
+    {% endblock %}
+</head>
+<body>
+    {% include 'header.html' %}
+    {% include 'navigation.html' %}
+    {% block body %}{% endblock %}
+    {% include 'footer.html' %}
+</body>
+</html>
