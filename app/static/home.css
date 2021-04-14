@@ -61,15 +61,47 @@ a:visited {
 body {
     animation: bg-color 100ms infinite;
 }  */
+.dropbtn {
+    background-color: red;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 
-div.signupthing {
+}
+
+.dropdown {
     position: absolute;
+    display: inline-block;
     top: 8px;
     right: 8px;
 }
 
-div.loginthing {
+.dropdown-content {
+    display: none;
     position: absolute;
-    top: 8px;
-    right: 75px;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: red;
 }

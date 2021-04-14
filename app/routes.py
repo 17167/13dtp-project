@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request, flash
-from flask_login import login_user, login_manager
+from flask_login import login_user, login_manager, logout_user
 from flask_sqlalchemy import SQLAlchemy
 from app import app, db, login_manager
 from app.models import Users, Post
@@ -9,6 +9,7 @@ def load_user(Users_id):
     return Users.query.get(int(Users_id))
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/home')
 def index():
     return render_template("home.html")
 
@@ -47,3 +48,8 @@ def signup():
         db.session.commit()
         return redirect("/")
     return render_template("signup.html")
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect("/")
