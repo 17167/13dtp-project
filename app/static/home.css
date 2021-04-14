@@ -1,4 +1,4 @@
-@keyframes color {
+/* @keyframes color {
     0%,
     100% {
         text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00
@@ -32,7 +32,7 @@
 
 p {
     animation: color 100ms infinite;
-    /* text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00; */
+    text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00;
 }
 
 h1 {
@@ -60,4 +60,16 @@ a:visited {
 
 body {
     animation: bg-color 100ms infinite;
+}  */
+
+div.signupthing {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+div.loginthing {
+    position: absolute;
+    top: 8px;
+    right: 75px;
 }

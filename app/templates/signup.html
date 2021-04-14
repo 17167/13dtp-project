@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Signup Here</h1>
+<form action="/signup", method="POST">
+    <input type="text" name="new_user" placeholder="bruh">
+    <input type="password" name="new_password" placeholder="bruh">
+    <input type="submit" value="Signup">
+</form>
+<br>
+{% for message in get_flashed_messages() %}
+    {{ message }}
+{% endfor %}
+<br><br>
+
+{% include "navigation.html" %}
+{% endblock %}
+}

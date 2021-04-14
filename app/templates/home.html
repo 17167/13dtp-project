@@ -1,10 +1,22 @@
 {% extends 'layout.html' %}
 {% block head %}
     {{ super() }}
-    <!--<link rel="stylesheet" href="/static/home.css">-->
+    <link rel="stylesheet" href="/static/home.css">
 {% endblock %}
-{% block title %}Pokémon Home{% endblock %}
+
+{% block title %}Test Database thing{% endblock %}
 
 {% block body %}
-<p>This is the start of a database thing</p>
+<h1>Home for now</h1>
+<div class="signupthing">
+    <form action="/signup">
+        <input type="submit" value="Signup">
+    </form>
+</div>
+<br>
+<div class="loginthing">
+    <form>
+        <input type="submit" value="Login">
+    </form>
+</div>
 {% endblock %}

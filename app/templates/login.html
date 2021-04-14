@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Login o'er 'ere</h1>
+<form action="/login" method='POST'>
+    <input type="text" placeholder="bruh" name="username">
+    <input type="password" placeholder="bruh" name="password">
+    <input type="submit" value="succ">
+</form>
+<br>
+{% for message in get_flashed_messages() %}
+    {{ message }}
+{% endfor %}
+<br><br>
+{% include "navigation.html" %}
+{% endblock %}
+
