@@ -23,8 +23,7 @@ def login():
             flash("woops")
             return redirect("/login")
         login_user(user)
-        #print(user.username)
-        flash("welcom bruh")
+        flash("welcome bruh")
         return redirect("/")
     return render_template("login.html")        
 
@@ -46,8 +45,19 @@ def signup():
             return redirect("/signup")
         db.session.add(new_user)
         db.session.commit()
-        return redirect("/")
+        flash("you're all signed up")
+        return redirect("/login")
     return render_template("signup.html")
+
+@app.route('createpost', methods=['GET','POST'])
+@admin_required
+def createpost():
+    if request.method == 'POST'
+    new_post = Post()
+    new_post.title = request.form.get('new_post')
+    new_post.body = request.form.get('new_post.body')
+    return render_template("createpost.html")
+
 
 @app.route("/logout")
 def logout():
