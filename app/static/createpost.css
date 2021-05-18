@@ -2,10 +2,20 @@ h1 {
     text-align: center;
 }
 
-div.title, div.body {
+form.main {
     text-align: center;
 }
 
-div.body {
-    
+.body {
+    width: 15%;
+    height: 200px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.title {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input[type=submit] {
+    text-align: center;
 }
