@@ -40,8 +40,7 @@ h1 {
     text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00;
 }
 
-
-/* a:link {
+a:link {
     animation: color 100ms infinite 200ms;
     text-shadow: 2px 2px #FF0000, 3px 3px #8c00ff, 4px 4px #00ff0d, 5px 5px #fbff00;
     color: black;
@@ -63,4 +62,34 @@ body {
     animation: bg-color 100ms infinite;
 }  */
 
+div.flash {
+    position: absolute;
+    top: 15px;
+    right: 105px;
+    font-weight: bold;
+    font-size: 30px;
 }
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.postcontent {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+.active, .collapsible:hover {
+background-color: #555;
+}  

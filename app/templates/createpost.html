@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/createpost.css">
+{% endblock %}
+
+{% block body %}
+<h1>Create Ya Post</h1>
+<form action="/createpost" method="POST">
+    <div class="title">
+    <input type="text" placeholder="Title" name="new_post_title">
+    </div>
+    <br>
+    <div class="body">
+    <input type="text" placeholder="Write about your post!" name="new_post_body">
+    </div>
+    <br><br>
+    <input type="submit" value="Create post">
+</form>
+<br>
+{% for message in get_flashed_messages() %}
+<div class="flash">
+    {{ message }}
+</div>
+{% endfor %}
+{% endblock %}

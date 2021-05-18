@@ -20,8 +20,8 @@ class Post(db.Model):
     __tablename__ = 'Post'
 
     id = db.Column(db.Integer, primary_key=True)
-    post_title = db.Column(db.String(50), nullable=False)
-    post_body = db.Column(db.String(), nullable=False)
+    title = db.Column(db.String(50), nullable=False)
+    body = db.Column(db.String(), nullable=False)
 
 # class Comments(db.Model):
 #     __tablename__ = 'Comments'

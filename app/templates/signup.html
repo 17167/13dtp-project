@@ -3,8 +3,11 @@
 {% block body %}
 <h1>Signup Here</h1>
 <form action="/signup", method="POST">
-    <input type="text" name="new_user" placeholder="bruh">
-    <input type="password" name="new_password" placeholder="bruh">
+    <p>Username</p>
+    <input type="text" placeholder="Don't use your real name!" name="new_user">
+    <br>
+    <p>Password</p>
+    <input type="password" placeholder="Password" name="new_password">
     <input type="submit" value="Signup">
 </form>
 <br>
@@ -12,7 +15,4 @@
     {{ message }}
 {% endfor %}
 <br><br>
-
-{% include "navigation.html" %}
 {% endblock %}
-}
