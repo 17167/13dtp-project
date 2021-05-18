@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request, flash
-from flask_login import login_user, login_manager, logout_user
+from flask_login import login_user, login_manager, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from app import app, db, login_manager
 from app.models import Users, Post
@@ -50,7 +50,10 @@ def signup():
     return render_template("signup.html")
 
 @app.route('/createpost', methods=['GET','POST'])
+@login_required
 def createpost():
+    if not current_user.is_admin:
+        return abort(401)
     if request.method == 'POST':
         new_post = Post()
         new_post.title = request.form.get('new_post_title')
@@ -64,7 +67,7 @@ def createpost():
         db.session.add(new_post)
         db.session.commit()
         return redirect("/")
-    return render_template("createpost.html")
+    return render_template('createpost.html')
 
 @app.route('/deletepost', methods=["POST"])
 def deletepost():
