@@ -22,6 +22,9 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     body = db.Column(db.String(), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('Users.id'))
+
+    users = db.relationship('Users', backref='posts')
 
 # class Comments(db.Model):
 #     __tablename__ = 'Comments'
@@ -44,3 +47,13 @@ class Post(db.Model):
 #     Post = db.relationship('Post', backref='Images')
 
 db.create_all()
+
+
+def create_debug_user(username, password, is_admin):
+    if Users.query.filter(Users.username==username).first() is None:
+        new_user = Users(username=username, is_admin=is_admin)
+        new_user.set_password(password)
+        db.session.add(new_user)
+        db.session.commit()
+
+create_debug_user('bruh', 'bruh', 1)

@@ -1,5 +1,8 @@
 {% extends "layout.html" %}
-
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/signup.css">
+{% endblock %}
 {% block body %}
 <h1>Signup Here</h1>
 <form action="/signup", method="POST">
@@ -8,6 +11,7 @@
     <br>
     <p>Password</p>
     <input type="password" placeholder="Password" name="new_password">
+    <br><br>
     <input type="submit" value="Signup">
 </form>
 <br>

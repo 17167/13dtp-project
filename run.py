@@ -1,7 +1,7 @@
 from app import app
 import os
 
-print("It's time to start running for your pathetic life that isn't worth anything")
+print("Better watch out better not cry")
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)

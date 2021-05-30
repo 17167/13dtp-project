@@ -13,10 +13,9 @@
         <button class="dropbutton">Account</button>
         <div class="dropdownthing-links">
         <a href="/">Home</a>
+        <a href="/articles">Articles</a>
         {% if current_user.is_authenticated %}
-            {% if current_user.is_admin %}
             <a href="/createpost">Create Post</a>
-            {% endif %} 
             <a href="/logout">Logout</a>
         {% else %}
             <a href="/login">Login</a>

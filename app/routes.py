@@ -1,6 +1,12 @@
+#Made by Jayden Ling
+#Made in 2021
+#App is essentially a personal blog
+#Only 1 user can upload posts and photos if they wish
+
 from flask import render_template, redirect, request, flash
 from flask_login import login_user, login_manager, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
+#from flaskext.uploads import 
 from app import app, db, login_manager
 from app.models import Users, Post
 
@@ -8,10 +14,10 @@ from app.models import Users, Post
 def load_user(Users_id):
     return Users.query.get(int(Users_id))
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
     posts = Post.query.all()
-    return render_template("home.html", posts=posts)
+    return render_template("index.html", posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -20,7 +26,7 @@ def login():
         password = request.form.get("password")
         user = Users.query.filter(Users.username == username).first()
         if user is None or not user.check_password(password):
-            flash("woops")
+            flash("Wrong username or password")
             return redirect("/login")
         login_user(user)
         flash(f"welcome {user.username}")
@@ -52,8 +58,6 @@ def signup():
 @app.route('/createpost', methods=['GET','POST'])
 @login_required
 def createpost():
-    if not current_user.is_admin:
-        return abort(401)
     if request.method == 'POST':
         new_post = Post()
         new_post.title = request.form.get('new_post_title')
@@ -66,7 +70,7 @@ def createpost():
             return render_template("/createpost.html")
         db.session.add(new_post)
         db.session.commit()
-        return redirect("/")
+        return redirect("/articles")
     return render_template('createpost.html')
 
 @app.route('/deletepost', methods=["POST"])
@@ -77,6 +81,11 @@ def deletepost():
         db.session.commit()
         return redirect('/')
     return redirect('/')
+
+@app.route('/articles')
+def articles():
+        posts = Post.query.all()
+        return render_template('articles.html', posts=posts)
 
 @app.route("/logout")
 def logout():

@@ -65,7 +65,7 @@ body {
 div.flash {
     position: absolute;
     top: 15px;
-    right: 105px;
+    right: 115px;
     font-weight: bold;
     font-size: 30px;
 }
@@ -74,20 +74,23 @@ div.flash {
     background-color: #777;
     color: white;
     cursor: pointer;
-    padding: 18px;
+    padding: 10px;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
+    word-wrap: break-word;
 }
 
 .postcontent {
-    padding: 0 18px;
+    padding: 0 15px 0 15px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
+    transition: max-height 0.1s ease-out;
+    background-color: black;
+    word-wrap: break-word;
+    color: white;
 }
 
 .active, .collapsible:hover {
