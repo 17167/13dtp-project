@@ -7,13 +7,14 @@ form.main {
 }
 
 .body {
-    width: 15%;
-    height: 200px;
+    width: 25%;
+    height: 300px;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .title {
     font-family: 'Courier New', Courier, monospace;
+    width: 25%;
 }
 
 input[type=submit] {

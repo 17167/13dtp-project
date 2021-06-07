@@ -69,8 +69,15 @@ div.flash {
     font-weight: bold;
     font-size: 30px;
 }
-
-.collapsible {
+h1{
+    width: 100%;
+    text-align: center;
+}
+.articles {
+    text-align: center;
+    border: solid 1px;
+}
+/* .collapsible {
     background-color: #777;
     color: white;
     cursor: pointer;
@@ -95,4 +102,5 @@ div.flash {
 
 .active, .collapsible:hover {
 background-color: #555;
-}  
+}   */
+

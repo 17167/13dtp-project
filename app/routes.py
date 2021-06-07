@@ -29,7 +29,7 @@ def login():
             flash("Wrong username or password")
             return redirect("/login")
         login_user(user)
-        flash(f"welcome {user.username}")
+        flash(f"welcome {user.username}", "nav")
         return redirect("/")
     return render_template("login.html")        
 
@@ -68,7 +68,7 @@ def createpost():
         if new_post.body.isspace() or new_post.body == "":
             flash("That's not a valid article")
             return render_template("/createpost.html")
-        db.session.add(new_post)
+        current_user.posts.append(new_post)
         db.session.commit()
         return redirect("/articles")
     return render_template('createpost.html')
@@ -79,8 +79,8 @@ def deletepost():
         old_post = Post.query.get(request.form.get('articleid'))
         db.session.delete(old_post)
         db.session.commit()
-        return redirect('/')
-    return redirect('/')
+        return redirect('/articles')
+    return redirect('articles')
 
 @app.route('/articles')
 def articles():
@@ -90,5 +90,5 @@ def articles():
 @app.route("/logout")
 def logout():
     logout_user()
-    flash("Logout Successful")
+    flash("Logout Successful", "nav")
     return redirect("/")

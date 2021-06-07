@@ -9,11 +9,11 @@
 {% block body %}
 <h1>Articles</h1>
 {% for article in posts %}
-<button class="collapsible"><h2>{{ article.title }}</h2></button>
-<div class="postcontent">
+<div class="articles">
+<h2>{{ article.title }}</h2>
   <!-- <img src="/static/images/Capture.PNG" alt="bruh" style="width: 300px;"> -->
     <p>{{ article.body }}</p>
-    {% if current_user.is_admin %}
+    {% if current_user.is_admin or current_user.id==article.user_id %}
     <form style="padding-bottom:10px;" action="/deletepost", method="POST" onSubmit="return confirm('You sure you wanna delete this article?');">
       <input type="hidden" name="articleid" value="{{ article.id }}">
       <input type="submit" value="Delete Post">
@@ -21,13 +21,7 @@
     {% endif %}
 </div>
 {% endfor %}
-
-{% for message in get_flashed_messages() %}
-<div class="flash">
-    {{ message }}
-</div>
-{% endfor %}
-<script>
+<!-- <script>
     var coll = document.getElementsByClassName("collapsible");
     var i;
     
@@ -42,5 +36,5 @@
         } 
       });
     }
-</script>
+</script> -->
 {% endblock %}

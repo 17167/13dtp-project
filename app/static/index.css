@@ -1,0 +1,7 @@
+div.flash {
+    position: absolute;
+    top: 15px;
+    right: 115px;
+    font-weight: bold;
+    font-size: 30px;
+}
