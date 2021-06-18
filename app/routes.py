@@ -8,7 +8,7 @@ from flask_login import login_user, login_manager, logout_user, login_required, 
 from flask_sqlalchemy import SQLAlchemy
 #from flaskext.uploads import 
 from app import app, db, login_manager
-from app.models import Users, Post
+from app.models import Users, Post, Comments
 
 @login_manager.user_loader
 def load_user(Users_id):
@@ -30,7 +30,7 @@ def login():
             return redirect("/login")
         login_user(user)
         flash(f"welcome {user.username}", "nav")
-        return redirect("/")
+        return redirect("/articles")
     return render_template("login.html")        
 
 @app.route('/signup', methods=['GET','POST'])
@@ -48,6 +48,12 @@ def signup():
             return render_template("signup.html")
         elif len(new_user.username) < 5:
             flash("Username has a minimum length of 5 characters, sorry!") 
+            return redirect("/signup")
+        elif password.isspace() or password == "":
+            flash("Password can't be empty!")
+            return redirect("/signup")
+        elif len(password) < 8:
+            flash("Minimum of 8 characters for passwords!")
             return redirect("/signup")
         db.session.add(new_user)
         db.session.commit()
@@ -85,7 +91,23 @@ def deletepost():
 @app.route('/articles')
 def articles():
         posts = Post.query.all()
-        return render_template('articles.html', posts=posts)
+        return render_template('allarticles.html', posts=posts)
+
+@app.route('/article/<post>')
+def article(post):
+    article = Post.query.filter(Post.title == post).first_or_404()
+    comment = Comments.query.all()
+    return render_template("actualarticle.html", article=article)
+
+@app.route('/addcomment', methods=['POST'])
+def comment():
+    new_comment = request.form.get("comment")
+    postid = request.form.get('post_id', None)
+    post = Post.query.get(postid)
+    if postid and post:
+        return redirect(f'/article/{post.title}')
+    else:
+        return redirect('/articles')
 
 @app.route("/logout")
 def logout():

@@ -3,7 +3,7 @@
     {{ super() }}
     <link rel="stylesheet" href="/static/createpost.css">
 {% endblock %}
-
+{% block title %}Create a post{% endblock %}
 {% block body %}
 <h1>Create Ya Post</h1>
 <form action="/createpost" method="POST" class="main">

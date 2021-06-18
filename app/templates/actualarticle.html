@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/actualarticle.css">
+{% endblock %}
+{% block title %}{{article.title}}{% endblock %}
+
+{% block body %}
+<h2>{{ article.title }}</h2>
+<p>{{ article.body }}</p>
+
+<h3>Leave a comment here!</h3>
+<form action="/addcomment" method='POST'>
+    <textarea name="comment" placeholder="comment"></textarea>
+    <input type="hidden" value="{{article.id}}" name="post_id">
+    <br>
+    <input type="submit">
+</form>
+{% endblock %}

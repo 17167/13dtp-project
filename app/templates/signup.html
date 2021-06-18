@@ -3,7 +3,9 @@
     {{ super() }}
     <link rel="stylesheet" href="/static/signup.css">
 {% endblock %}
+{% block title %}Signup{% endblock %}
 {% block body %}
+<div class="form">
 <h1>Signup Here</h1>
 <form action="/signup", method="POST">
     <p>Username</p>
@@ -14,6 +16,7 @@
     <br><br>
     <input type="submit" value="Signup">
 </form>
+</div>
 <br>
 {% for message in get_flashed_messages() %}
     {{ message }}

@@ -26,16 +26,16 @@ class Post(db.Model):
 
     users = db.relationship('Users', backref='posts')
 
-# class Comments(db.Model):
-#     __tablename__ = 'Comments'
+class Comments(db.Model):
+    __tablename__ = 'Comments'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     post_id = db.Column(db.Integer, db.ForeignKey('Post.id'))
-#     comment_body = db.Column(db.String(100), nullable=False)
-#     commenter = db.Column(db.Integer, db.ForeignKey('Users.id'))
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('Post.id'))
+    comment = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('Users.id'))
 
-#     post = db.relationship('Post', backref='Comments')
-#     Users = db.relationship('Users', backref='Comments')
+    post = db.relationship('Post', backref='comments')
+    users = db.relationship('Users', backref='commenter')
 
 # class Images(db.Model):
 #     __tablename__ = 'Images'

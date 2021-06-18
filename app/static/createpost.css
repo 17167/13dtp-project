@@ -8,8 +8,9 @@ form.main {
 
 .body {
     width: 25%;
-    height: 300px;
+    height: 600px;
     font-family: 'Courier New', Courier, monospace;
+    resize: none;
 }
 
 .title {
