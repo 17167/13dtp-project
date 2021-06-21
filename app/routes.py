@@ -81,12 +81,10 @@ def createpost():
 
 @app.route('/deletepost', methods=["POST"])
 def deletepost():
-    if request.method == 'POST':
-        old_post = Post.query.get(request.form.get('articleid'))
-        db.session.delete(old_post)
-        db.session.commit()
-        return redirect('/articles')
-    return redirect('articles')
+    old_post = Post.query.get(request.form.get('articleid'))
+    db.session.delete(old_post)
+    db.session.commit()
+    return redirect('/articles')
 
 @app.route('/articles')
 def articles():
@@ -96,14 +94,22 @@ def articles():
 @app.route('/article/<post>')
 def article(post):
     article = Post.query.filter(Post.title == post).first_or_404()
-    comment = Comments.query.all()
-    return render_template("actualarticle.html", article=article)
+    comments = Comments.query.all()
+    return render_template("actualarticle.html", article=article, comments=comments)
 
 @app.route('/addcomment', methods=['POST'])
 def comment():
-    new_comment = request.form.get("comment")
+    new_comment = Comments()
+    new_comment.comment = request.form.get("comment")
+    current_user.commenter.append(new_comment)
     postid = request.form.get('post_id', None)
     post = Post.query.get(postid)
+    post.comments.append(new_comment)
+    if new_comment.comment.isspace() or new_comment.comment == "":
+        flash("That ain't it chief")
+        if postid and post:
+            return redirect(f'/article/{post.title}')
+    db.session.commit()
     if postid and post:
         return redirect(f'/article/{post.title}')
     else:

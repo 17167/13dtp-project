@@ -9,11 +9,19 @@
 <h2>{{ article.title }}</h2>
 <p>{{ article.body }}</p>
 
+{% if current_user.is_authenticated %}
 <h3>Leave a comment here!</h3>
 <form action="/addcomment" method='POST'>
-    <textarea name="comment" placeholder="comment"></textarea>
+    <textarea name="comment" placeholder="Add your comment"></textarea>
     <input type="hidden" value="{{article.id}}" name="post_id">
     <br>
     <input type="submit">
 </form>
+{% endif %}
+<h3>Comments</h3>
+{% for comment in comments %}
+    {% if article.id == comment.post_id %}
+        <p>{{ comment.comment }}</p>
+    {% endif %}
+{% endfor %}
 {% endblock %}

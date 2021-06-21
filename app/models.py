@@ -44,7 +44,7 @@ class Comments(db.Model):
 #     imageurl = db.Column(db.Text(100))
 #     post_id = db.Column(db.Integer, db.ForeignKey('Post.id'))
 
-#     Post = db.relationship('Post', backref='Images')
+#     Post = db.relationship('Post', backref='images')
 
 db.create_all()
 
