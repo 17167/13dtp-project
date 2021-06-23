@@ -10,3 +10,7 @@ textarea {
     resize: none;
     height: 100px;
 }
+
+p {
+    word-wrap: break-word;
+}

@@ -109,6 +109,10 @@ def comment():
         flash("That ain't it chief")
         if postid and post:
             return redirect(f'/article/{post.title}')
+    if len(new_comment.comment) > 256:
+        flash("Please shorten your comment")
+        if postid and post:
+            return redirect(f'/article/{post.title}')
     db.session.commit()
     if postid and post:
         return redirect(f'/article/{post.title}')
