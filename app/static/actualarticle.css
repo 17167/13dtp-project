@@ -11,6 +11,11 @@ textarea {
     height: 100px;
 }
 
-p {
+p.comment {
     word-wrap: break-word;
+    margin-bottom: 0px;
+}
+
+p.article {
+    margin-top: -4px;
 }

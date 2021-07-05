@@ -7,7 +7,7 @@
 
 {% block body %}
 <h2>{{ article.title }}</h2>
-<p>{{ article.body }}</p>
+<p class="article">{{ article.body }}</p>
 
 {% if current_user.is_authenticated %}
 <h3>Leave a comment here!</h3>
@@ -24,7 +24,14 @@
 <h3>Comments</h3>
 {% for comment in comments %}
     {% if article.id == comment.post_id %}
-        <p>{{ comment.comment }}</p>
+        <p class="comment">{{ comment.comment }}</p>
+        {% if current_user.is_admin or current_user.id == comment.user_id %}
+        <form action="/deletecomment" method="POST" onSubmit="return confirm('You sure you wanna delete this comment?');">
+        <input type="hidden" value="{{comment.id}}" name="commentid">
+        <input type="hidden" value="{{article.id}}" name="post_id">
+        <input type="submit" value="Delete">
+        </form>
+        {% endif %}
     {% endif %}
 {% endfor %}
 {% endblock %}

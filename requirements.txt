@@ -1,1 +1,2 @@
-Flask-Uploads==0.1.3
+better_profanity==0.7.0
+cryptography==3.4.7

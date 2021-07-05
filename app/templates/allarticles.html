@@ -9,7 +9,6 @@
 {% for article in posts %}
 <div class="articles">
 <h2><a href="/article/{{ article.title }}">{{ article.title }}</h2>
-  <!-- <img src="/static/images/Capture.PNG" alt="bruh" style="width: 300px;"> -->
     <p>{{ article.body|truncate(300, False, '...')  }}</p></a>
     {% if current_user.is_admin or current_user.id==article.user_id %}
     <form style="padding-bottom:10px;" action="/deletepost", method="POST" onSubmit="return confirm('You sure you wanna delete this article?');">

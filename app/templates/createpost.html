@@ -6,11 +6,12 @@
 {% block title %}Create a post{% endblock %}
 {% block body %}
 <h1>Create Ya Post</h1>
-<form action="/createpost" method="POST" class="main">
+<form action="/createpost" method="POST" class="main" enctype=multipart/form-data>
     <input class="title" type="text" placeholder="Title" name="new_post_title">
     <br><br>
     <textarea class="body" type="text" placeholder="Write about your post!" name="new_post_body"></textarea>
-    <br><br>
+    <br>
+    <!-- <input class='title' type="file" name='new_file'> <br> -->
     <input type="submit" value="Create post">
 </form>
 <br>

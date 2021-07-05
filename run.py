@@ -1,5 +1,8 @@
-from app import app
 import os
+
+os.system("pip install -r requirements.txt -q")
+
+from app import app
 
 print("Database Initiated")
 
