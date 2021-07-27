@@ -3,13 +3,14 @@
 #App is essentially a personal blog
 #Only 1 user can upload posts and photos if they wish
 
-from flask import render_template, redirect, request, flash
+from flask import render_template, redirect, request, flash, session
 from flask_login import login_user, login_manager, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-from better_profanity import profanity
 from app import app, db, login_manager
-from app.models import Users, Post, Comments
+from app.models import Users, Post, Comments, profanity
+
+profanity.load_censor_words_from_file(app.config["CENSOR_WORDS"])
 
 @login_manager.user_loader
 def load_user(Users_id):
@@ -17,8 +18,7 @@ def load_user(Users_id):
 
 @app.route('/')
 def index():
-    posts = Post.query.all()
-    return render_template("index.html", posts=posts)
+    return render_template("index.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -38,7 +38,7 @@ def login():
 def signup():
     if request.method == 'POST':
         new_user = Users()
-        new_user.username = profanity.censor(request.form.get('new_user'))
+        new_user.username = request.form.get('new_user')
         password = request.form.get('new_password')
         new_user.set_password(password)
         if Users.query.filter(new_user.username == Users.username).first():
@@ -67,8 +67,8 @@ def signup():
 def createpost():
     if request.method == 'POST':
         new_post = Post()
-        new_post.title = profanity.censor(request.form.get('new_post_title'))
-        new_post.body = profanity.censor(request.form.get('new_post_body'))
+        new_post.title = request.form.get('new_post_title')
+        new_post.body = request.form.get('new_post_body')
         if new_post.title.isspace() or new_post.title == "":
             flash("That's not a valid title")
             return render_template("/createpost.html")
@@ -94,14 +94,14 @@ def articles():
 
 @app.route('/article/<post>')
 def article(post):
-    article = Post.query.filter(Post.title == post).first_or_404()
+    article = Post.query.filter(Post.id == post).first_or_404()
     comments = Comments.query.all()
     return render_template("actualarticle.html", article=article, comments=comments)
 
 @app.route('/addcomment', methods=['POST'])
 def comment():
     new_comment = Comments()
-    new_comment.comment = profanity.censor(request.form.get("comment"))
+    new_comment.comment = request.form.get("comment")
     current_user.commenter.append(new_comment)
     postid = request.form.get('post_id', None)
     post = Post.query.get(postid)
@@ -109,14 +109,14 @@ def comment():
     if new_comment.comment.isspace() or new_comment.comment == "":
         flash("That ain't it chief")
         if postid and post:
-            return redirect(f'/article/{post.title}')
+            return redirect(f'/article/{post.id}')
     if len(new_comment.comment) > 256:
         flash("Please shorten your comment")
         if postid and post:
-            return redirect(f'/article/{post.title}')
+            return redirect(f'/article/{post.id}')
     db.session.commit()
     if postid and post:
-        return redirect(f'/article/{post.title}')
+        return redirect(f'/article/{post.id}')
     else:
         return redirect('/articles')
 
@@ -128,9 +128,14 @@ def deletecomment():
     post = Post.query.get(postid)
     db.session.commit()
     if postid and post:
-        return redirect(f'/article/{post.title}')
+        return redirect(f'/article/{post.id}')
     else:
         return redirect('/articles')
+
+@app.route('/togglensfw')
+def nsfwmode():
+    session['nsfw'] = not session.get('nsfw', False)
+    return redirect(request.args.get('t', '/'))
 
 
 @app.route("/logout")

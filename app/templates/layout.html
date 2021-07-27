@@ -21,6 +21,9 @@
         <div class="menu">
         <span>{{ get_flashed_messages(category_filter=["nav"])[-1] }}</span>
         <!-- <a href="/" class="pseudo button icon-picture">Home</a> -->
+        {% if current_user.is_authenticated %}
+        <a href="/togglensfw?t={{ request.path }}" class="pseudo button icon-puzzle">NSFW {{ 'OFF' if session.get('nsfw', False) else 'ON' }}</a>
+        {% endif %}
         <a href="/articles" class="pseudo button icon-puzzle">Articles</a>
         {% if current_user.is_authenticated %}
         <a href="/createpost" class="pseudo button icon-picture">Create Post</a>

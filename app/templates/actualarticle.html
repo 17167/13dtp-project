@@ -3,11 +3,11 @@
     {{ super() }}
     <link rel="stylesheet" href="/static/actualarticle.css">
 {% endblock %}
-{% block title %}{{article.title}}{% endblock %}
+{% block title %}{{article.title_censored}}{% endblock %}
 
 {% block body %}
-<h2>{{ article.title }}</h2>
-<p class="article">{{ article.body }}</p>
+<h2>{{ article.title_censored }}</h2>
+<p class="article">{{ article.body_censored }}</p>
 
 {% if current_user.is_authenticated %}
 <h3>Leave a comment here!</h3>
@@ -24,7 +24,7 @@
 <h3>Comments</h3>
 {% for comment in comments %}
     {% if article.id == comment.post_id %}
-        <p class="comment">{{ comment.comment }}</p>
+        <p class="comment">{{ comment.comment_censored }}</p>
         {% if current_user.is_admin or current_user.id == comment.user_id %}
         <form action="/deletecomment" method="POST" onSubmit="return confirm('You sure you wanna delete this comment?');">
         <input type="hidden" value="{{comment.id}}" name="commentid">

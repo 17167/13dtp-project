@@ -1,2 +1,3 @@
-better_profanity==0.7.0
+profanityfilter==2.0.6
 cryptography==3.4.7
+better_profanity==0.7.0

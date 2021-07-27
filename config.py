@@ -1,5 +1,5 @@
 import os
-from better_profanity import profanity
+# from app.models import profanity
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'awjdobaydvawd'
@@ -9,4 +9,4 @@ class Config(object):
     SQLACHEMY_ECHO = False
     UPLOAD_FOLDER = '/app/static/images'
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'gif'}
-    profanity.load_censor_words_from_file('profane_words.txt')
+    CENSOR_WORDS = os.path.abspath('profane_words.txt')
