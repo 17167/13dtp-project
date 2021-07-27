@@ -140,6 +140,7 @@ def nsfwmode():
 
 @app.route("/logout")
 def logout():
+    session['nsfw'] = False
     logout_user()
     flash("Logout Successful", "nav")
     return redirect("/")
