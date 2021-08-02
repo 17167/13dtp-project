@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}5chan{% endblock %}</title>
     {% block head %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
     <link rel="stylesheet" href="/static/layout.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
     {% endblock %}
 </head>
 <body>
@@ -27,28 +27,14 @@
         <a href="/articles" class="pseudo button icon-puzzle">Articles</a>
         {% if current_user.is_authenticated %}
         <a href="/createpost" class="pseudo button icon-picture">Create Post</a>
-        <a href="/logout" class="button icon-puzzle">Logout</a>
+        <a href="/logout" class="custom-button button icon-puzzle">Logout</a>
         {% else %}
         <a href="/login" class="pseudo button icon-picture">Login</a>
-        <a href="/signup" class="button icon-puzzle">Signup</a>
+        <a href="/signup" class="custom-button button icon-puzzle">Signup</a>
         {% endif %}
         </div>
     </nav>
-    <!-- <div class="dropdownthing">
-        <button class="dropbutton">Account</button>
-        <div class="dropdownthing-links">
-        <a href="/">Home</a>
-        <a href="/articles">Articles</a>
-        {% if current_user.is_authenticated %}
-            <a href="/createpost">Create Post</a>
-            <a href="/logout">Logout</a>
-        {% else %}
-            <a href="/login">Login</a>
-            <a href="/signup">Signup</a>
-        {% endif %}
-        </div>
-    </div> -->
-    <main class='flex one'>
+    <main class='flex one gap'>
         {% block body %}{% endblock %}
     </main>
     {% include 'footer.html' %}

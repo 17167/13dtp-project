@@ -11,7 +11,7 @@
 
 {% if current_user.is_authenticated %}
 <h3>Leave a comment here!</h3>
-<form action="/addcomment" method='POST'>
+<form action="/addcomment?t={{ request.path }}" method='POST'>
     <textarea name="comment" placeholder="Add your comment"></textarea>
     <input type="hidden" value="{{article.id}}" name="post_id">
     <br>
@@ -26,7 +26,7 @@
     {% if article.id == comment.post_id %}
         <p class="comment">{{ comment.comment_censored }}</p>
         {% if current_user.is_admin or current_user.id == comment.user_id %}
-        <form action="/deletecomment" method="POST" onSubmit="return confirm('You sure you wanna delete this comment?');">
+        <form action="/deletecomment?t={{ request.path }}" method="POST" onSubmit="return confirm('You sure you wanna delete this comment?');">
         <input type="hidden" value="{{comment.id}}" name="commentid">
         <input type="hidden" value="{{article.id}}" name="post_id">
         <input type="submit" value="Delete">

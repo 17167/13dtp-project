@@ -50,6 +50,9 @@ def signup():
         elif len(new_user.username) < 5:
             flash("Username has a minimum length of 5 characters, sorry!") 
             return redirect("/signup")
+        elif len(new_user.username) > 16:
+            flash("Username has a max length of 16!")
+            return redirect("/signup")
         elif password.isspace() or password == "":
             flash("Password can't be empty!")
             return redirect("/signup")
@@ -108,29 +111,19 @@ def comment():
     post.comments.append(new_comment)
     if new_comment.comment.isspace() or new_comment.comment == "":
         flash("That ain't it chief")
-        if postid and post:
-            return redirect(f'/article/{post.id}')
+        return redirect(request.args.get('t', '/'))
     if len(new_comment.comment) > 256:
         flash("Please shorten your comment")
-        if postid and post:
-            return redirect(f'/article/{post.id}')
+        return redirect(request.args.get('t', '/'))
     db.session.commit()
-    if postid and post:
-        return redirect(f'/article/{post.id}')
-    else:
-        return redirect('/articles')
+    return redirect(request.args.get('t', '/'))
 
 @app.route('/deletecomment', methods=['POST'])
 def deletecomment():
     old_comment = Comments.query.get(request.form.get('commentid'))
     db.session.delete(old_comment)
-    postid = request.form.get('post_id', None)
-    post = Post.query.get(postid)
     db.session.commit()
-    if postid and post:
-        return redirect(f'/article/{post.id}')
-    else:
-        return redirect('/articles')
+    return redirect(request.args.get('t', '/'))
 
 @app.route('/togglensfw')
 def nsfwmode():

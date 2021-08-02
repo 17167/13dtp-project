@@ -7,7 +7,6 @@ from better_profanity.utils import (
     any_next_words_form_swear_word,
     get_complete_path_of_file,
     get_replacement_for_swear_word,
-    read_wordlist,
 )
 from flask import session
 # from profanityfilter import ProfanityFilter
