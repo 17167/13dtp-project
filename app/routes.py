@@ -67,17 +67,23 @@ def signup():
 
 @app.route('/createpost', methods=['GET','POST'])
 @login_required
-def createpost():
+def createpost():   
     if request.method == 'POST':
         new_post = Post()
         new_post.title = request.form.get('new_post_title')
         new_post.body = request.form.get('new_post_body')
         if new_post.title.isspace() or new_post.title == "":
             flash("That's not a valid title")
-            return render_template("/createpost.html")
+            return render_template("createpost.html")
+        if len(new_post.title) > 50:
+            flash("That's too long a title")
+            return render_template("createpost.html")
         if new_post.body.isspace() or new_post.body == "":
             flash("That's not a valid article")
-            return render_template("/createpost.html")
+            return render_template("createpost.html")
+        if len(new_post.body) > 1000:
+            flash("Article too long!")
+            return render_template("createpost.html")
         current_user.posts.append(new_post)
         db.session.commit()
         return redirect("/articles")
