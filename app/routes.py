@@ -82,9 +82,8 @@ def createpost():
         new_post = Post()
         new_post.title = request.form.get('new_post_title') #user input post title
         new_post.body = request.form.get('new_post_body')   #user input post body
-        new_post.image = request.files["new_post_image"].filename
-        request.files['new_post_image'].save(f'app/static/images/{new_post.image}')
-        print(new_post.image)
+        new_post.image = request.files["new_post_image"].filename #upload images    
+        request.files['new_post_image'].save(f'app/static/images/{new_post.image}') #save image to folder
         if new_post.title.isspace() or new_post.title == "": #blank title or space
             flash("That's not a valid title")
             return render_template("createpost.html")

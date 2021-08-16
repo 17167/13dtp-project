@@ -19,3 +19,6 @@ p.comment {
 p.article {
     margin-top: -4px;
 }
+img {
+    max-width: 50%;
+}
