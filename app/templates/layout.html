@@ -26,7 +26,8 @@
         {% endif %}
         <a href="/articles" class="pseudo button icon-puzzle">Articles</a>
         {% if current_user.is_authenticated %}
-        <a href="/createpost" class="pseudo button icon-picture">Create Post</a>
+        <!-- Only shows if user is logged in -->
+        <a href="/createpost" class="pseudo button icon-picture">Create Article</a>
         <a href="/logout" class="custom-button button icon-puzzle">Logout</a>
         {% else %}
         <a href="/login" class="pseudo button icon-picture">Login</a>

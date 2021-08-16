@@ -53,10 +53,10 @@ main {
 a.custom-button, input[type=submit]{
     background-color: black;
     color: white;
-    animation: bg-color 100ms infinite;
+    /* animation: bg-color 100ms infinite; */
 }
 
-
+/* 
 @keyframes bg-color {
     0%,
     100% {
@@ -72,4 +72,4 @@ a.custom-button, input[type=submit]{
         background: #8c00ff;
     }
 }
-
+ */

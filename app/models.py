@@ -100,7 +100,9 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     body = db.Column(db.String(), nullable=False)
+    image = db.Column(db.String(), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('Users.id'))
+    
 
     users = db.relationship('Users', backref='posts')
 
@@ -126,15 +128,6 @@ class Comments(db.Model):
     @property
     def comment_censored(self):
         return profanity.censor(self.comment)
-
-# class Images(db.Model):
-#     __tablename__ = 'Images'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     imageurl = db.Column(db.Text(100))
-#     post_id = db.Column(db.Integer, db.ForeignKey('Post.id'))
-
-#     Post = db.relationship('Post', backref='images')
 
 db.create_all()
 

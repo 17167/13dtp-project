@@ -7,6 +7,7 @@
 
 {% block body %}
 <h2>{{ article.title_censored }}</h2>
+<img src="/static/images/{{ article.image }}" alt="">
 <p class="article">{{ article.body_censored }}</p>
 
 {% if current_user.is_authenticated %}

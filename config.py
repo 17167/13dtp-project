@@ -7,6 +7,4 @@ class Config(object):
         'sqlite:///website.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLACHEMY_ECHO = False
-    UPLOAD_FOLDER = '/app/static/images'
-    ALLOWED_EXTENSIONS = {'png', 'jpg', 'gif'}
     CENSOR_WORDS = os.path.abspath('profane_words.txt')
