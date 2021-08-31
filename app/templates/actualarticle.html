@@ -16,7 +16,7 @@
     <textarea name="comment" placeholder="Add your comment"></textarea>
     <input type="hidden" value="{{article.id}}" name="post_id">
     <br>
-    <input type="submit">
+    <input type="submit" value="Post Comment">
 </form>
 {% for message in get_flashed_messages() %}
     <p>{{ message }}</p>

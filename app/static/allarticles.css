@@ -19,7 +19,6 @@ h2 {
 }
 
 div.articles {
-    text-align: left;
     border: solid 1px;
     border-radius: 10px;
     padding-left: 25px;
@@ -29,6 +28,14 @@ div.articles {
     margin-right: 75px;
     word-wrap: break-word;
     overflow: hidden;
+}
+
+h2 {
+    text-align: center;
+}
+
+p {
+    text-align: left;
 }
 
 /* .collapsible {
