@@ -1,6 +1,7 @@
 #Made by Jayden Ling
 #Made in 2021
 
+import re
 from flask import render_template, redirect, request, flash, session
 from flask_login import login_user, login_manager, logout_user, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
@@ -71,7 +72,8 @@ def signup():
         db.session.add(new_user) #signs up new user
         db.session.commit() #adds to database
         flash("you're all signed up")
-        return redirect("/login")
+        login_user(new_user)
+        return redirect("/articles")
     return render_template("signup.html")
 
 #CREATE-A-POST PAGE

@@ -2,10 +2,7 @@ main {
     margin: 0 auto;
     padding: 60px 0 0;
     gap: 3px;
-}
-
-body {
-    background-color: aquamarine;
+    flex-grow: 0;
 }
 
 footer {
