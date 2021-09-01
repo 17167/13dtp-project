@@ -6,6 +6,11 @@
 {% block title %}Create a post{% endblock %}
 {% block body %}
 <h1>Create Ya Post</h1>
+{% for message in get_flashed_messages() %}
+<div class="flash">
+    {{ message }}
+</div>
+{% endfor %}
 <form action="/createpost" method="POST" class="main" enctype=multipart/form-data>
     <input class="title" type="text" placeholder="Title" name="new_post_title">
     <br><br>
@@ -15,9 +20,4 @@
     <input type="submit" value="Create post">
 </form>
 <br>
-{% for message in get_flashed_messages() %}
-<div class="flash">
-    {{ message }}
-</div>
-{% endfor %}
 {% endblock %}

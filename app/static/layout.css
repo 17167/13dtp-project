@@ -4,51 +4,16 @@ main {
     gap: 3px;
 }
 
-.dropbutton {
-    background-color: red;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    width: 100px;
+body {
+    background-color: aquamarine;
 }
 
-.dropdownthing {
-    position: absolute;
-    display: inline-block;
-    top: 8px;
-    right: 10px;
+footer {
+    position: relative;
+    bottom: 0px;
+    margin:10px;
+    font-size: 10px;
 }
-
-.dropdownthing-links {
-    display: none;
-    position: absolute;
-    background-color: black;
-    width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdownthing-links a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdownthing-links a:hover {
-    background-color: #2A2A2A
-}
-
-.dropdownthing:hover .dropdownthing-links {
-    display: block;
-}
-
-.dropdownthing:hover .dropbutton {
-    background-color: red;
-    box-shadow: 0 12px 16px 0 rgba(71, 51, 51, 0.24), 0 17px 50px 0 rgba(71, 51, 51, 0.24);
-} 
 
 a.custom-button, input[type=submit]{
     background-color: black;
