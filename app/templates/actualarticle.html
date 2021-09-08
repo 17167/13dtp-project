@@ -22,6 +22,7 @@
     <p>{{ message }}</p>
 {% endfor %}
 {% endif %}
+<div>
 <h3>Comments</h3>
 {% for comment in comments %}
     {% if article.id == comment.post_id %}
@@ -35,4 +36,5 @@
         {% endif %}
     {% endif %}
 {% endfor %}
+</div>
 {% endblock %}
