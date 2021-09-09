@@ -71,8 +71,8 @@ def signup():
             return redirect("/signup")
         db.session.add(new_user) #signs up new user
         db.session.commit() #adds to database
-        flash("you're all signed up")
         login_user(new_user)
+        flash(f"Welcome {new_user.username}", "nav")
         return redirect("/articles")
     return render_template("signup.html")
 

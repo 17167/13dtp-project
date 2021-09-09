@@ -2,18 +2,25 @@ main {
     margin: 0 auto;
     padding: 60px 0 0;
     gap: 3px;
-    flex-grow: 0;
+    flex-grow: 1;
+    align-content: start;
+    display: inline-block;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
-    position: relative;
     bottom: 0px;
     margin:10px;
     font-size: 10px;
+    display: inline-block;
 }
 
 a.custom-button, input[type=submit]{
-    background-color: black;
+    background-color: #F3812B;
     color: white;
     /* animation: bg-color 100ms infinite; */
 }
