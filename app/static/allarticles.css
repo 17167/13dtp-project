@@ -34,9 +34,14 @@ h2 {
     text-align: center;
 }
 
+h2:hover {
+    color: #4BB4E9;
+}
+
 p {
     text-align: left;
 }
+
 
 /* .collapsible {
     background-color: #777;

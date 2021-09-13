@@ -160,7 +160,7 @@ faget
 fagg1t
 faggit
 faggits
-faggot
+faggots
 faggot
 faggotry
 faggitry

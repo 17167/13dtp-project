@@ -21,8 +21,8 @@ p.article {
 }
 img {
     display: block;
-    width: auto;
-    height: auto;
     max-width: 1000px;
     max-height: 1000px;
+    height: auto;
+    width: auto;
 }
