@@ -89,7 +89,7 @@ def createpost():
         if new_post.title.isspace() or new_post.title == "": #blank title or space
             flash("That's not a valid title")
             return render_template("createpost.html")
-        if len(new_post.title) > 50: #title longer than 50 characters
+        if len(new_post.title) > 100: #title longer than 50 characters
             flash("That's too long a title")
             return render_template("createpost.html")
         if new_post.body.isspace() or new_post.body == "": #body empty or space

@@ -7,10 +7,8 @@
 
 {% block body %}
 <h2>{{ article.title_censored }}</h2>
-<div>
-<img src="/static/images/{{ article.image }}" alt="">
-</div>
-<p class="article">{{ article.body_censored }}</p>
+<pre><div><img src="/static/images/{{ article.image }}" alt="" style="float: left;"></div>
+<p class="article">{{ article.body_censored }}</p></pre>
 
 {% if current_user.is_authenticated %}
 <h3>Leave a comment here!</h3>

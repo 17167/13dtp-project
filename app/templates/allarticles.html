@@ -9,7 +9,7 @@
 {% for article in posts %}
 <div class="articles custom-button">
   <a href="/article/{{ article.id }}"><h2>{{ article.title_censored }}</h2></a>
-    <p>{{ article.body_censored|truncate(300, False, '...')  }}</p>
+    <p>{{ article.body_censored|truncate(50, False, '...')  }}</p>
     {% if current_user.is_admin or current_user.id==article.user_id %}
     <form class="custom-button" style="padding-bottom:10px;" action="/deletepost", method="POST" onSubmit="return confirm('You sure you wanna delete this article?');">
       <input type="hidden" name="articleid" value="{{ article.id }}">
