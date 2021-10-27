@@ -32,4 +32,5 @@ img {
 
 pre {
     background-color: white;
+    white-space: pre-wrap;
 }
