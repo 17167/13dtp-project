@@ -7,7 +7,7 @@ form.main {
 }
 
 .body {
-    width: 25%;
+    width: 40%;
     height: 600px;
     font-family: 'Courier New', Courier, monospace;
     resize: none;
@@ -15,7 +15,7 @@ form.main {
 
 .title {
     font-family: 'Courier New', Courier, monospace;
-    width: 25%;
+    width: 40%;
 }
 
 input[type=submit] {

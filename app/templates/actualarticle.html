@@ -28,10 +28,10 @@
     {% if article.id == comment.post_id %}
         <p class="comment">{{ comment.comment_censored }}</p>
         {% if current_user.is_admin or current_user.id == comment.user_id %}
-        <form action="/deletecomment?t={{ request.path }}" method="POST" onSubmit="return confirm('You sure you wanna delete this comment?');">
+        <form action="/deletecomment?t={{ request.path }}" method="POST" onSubmit="return confirm('You sure you wanna delete {{comment.comment_censored}}?');">
         <input type="hidden" value="{{comment.id}}" name="commentid">
         <input type="hidden" value="{{article.id}}" name="post_id">
-        <input type="submit" value="Delete">
+        <input type="submit" value="Delete"><br>
         </form>
         {% endif %}
     {% endif %}

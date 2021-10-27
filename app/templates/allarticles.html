@@ -8,7 +8,8 @@
 <h1>Articles</h1>
 {% for article in posts %}
 <div class="articles custom-button">
-  <a href="/article/{{ article.id }}"><h2>{{ article.title_censored }}</h2></a>
+  <a href="/article/{{ article.id }}"><h3>{{ article.title_censored }}</h3></a>
+  <img src="/static/images/{{ article.image }}" alt="">
     <p>{{ article.body_censored|truncate(50, False, '...')  }}</p>
     {% if current_user.is_admin or current_user.id==article.user_id %}
     <form class="custom-button" style="padding-bottom:10px;" action="/deletepost", method="POST" onSubmit="return confirm('You sure you wanna delete this article?');">

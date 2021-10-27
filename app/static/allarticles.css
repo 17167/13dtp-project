@@ -14,8 +14,9 @@ h1 {
     text-align: center;
 }
 
-h2 {
+h3 {
     text-decoration: underline;
+    text-align: center;
 }
 
 div.articles {
@@ -30,16 +31,20 @@ div.articles {
     overflow: hidden;
 }
 
-h2 {
-    text-align: center;
-}
-
-h2:hover {
+h3:hover {
     color: #4BB4E9;
 }
 
 p {
     text-align: left;
+}
+
+img {
+    width: auto;
+    height: auto;
+    max-width: 50px;
+    max-height: 50px;
+    float: left;
 }
 
 

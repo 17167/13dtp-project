@@ -14,8 +14,6 @@ textarea {
 p.comment {
     word-wrap: break-word;
     margin-bottom: 0px;
-    border: black 1px solid;
-    border-radius: 5px;
     margin-top: 0%;
 }
 
@@ -29,4 +27,8 @@ img {
     max-height: 400px;
     height: auto;
     width: auto;
+}
+
+pre {
+    background-color: white;
 }
