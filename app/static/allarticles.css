@@ -10,7 +10,6 @@ div.flash {
     font-size: 30px;
 }
 h1 {
-    width: 100%;
     text-align: center;
 }
 
@@ -20,13 +19,10 @@ h3 {
 }
 
 div.articles {
-    border-top: solid 1px;
-    border-bottom: solid 1px;
+    border-top: solid 3px;
+    border-bottom: solid 3px;
     padding-left: 25px;
     padding-right: 25px;
-    width: 100%;
-    margin-left: 75px;
-    margin-right: 75px;
     word-wrap: break-word;
     overflow: hidden;
 }
@@ -46,6 +42,7 @@ img {
     max-height: 50px;
     float: left;
     margin-right: 10px;
+    border-radius: 10px;
 }
 
 
